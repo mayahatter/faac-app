@@ -1,0 +1,8 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="http://com.faac/soap/dto">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <gs:getLoggedUsersRequest>
+        </gs:getLoggedUsersRequest>
+    </soapenv:Body>
+</soapenv:Envelope>
