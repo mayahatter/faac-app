@@ -1,6 +1,8 @@
 # FAAC-APP
-Sample web app that exposes a REST api and a SOAP web service interacting with MySQL database. 
-The frontEnd is simple ANgularJS with MvvM Pattern Implementation.
+Sample web app that exposes a REST api and a SOAP web service interacting with MySQL database.
+ 
+The frontEnd is simple angularJS with MvvM Pattern Implementation.
+
 Client and server are containerized together with Docker compose.
 
 # LAUNCHING APP
