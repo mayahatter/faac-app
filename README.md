@@ -1,10 +1,13 @@
-# RDBMS
+# FAAC-APP
+Web app che consiste in un backend con rest api e web service soap che dialogano con db mysql, e frontend con angularJS con pattern di sviluppo MvvM. Il tutto lanciato in un container tramite docker.
+
+## RDBMS
 Come RDBMS è stato utilizzato mysql
 
-# ORM
+## ORM
 Come ORM è stato utilizzato il JPA EntityManager di Hibernate facilmente integrabile in spring-boot
 
-# API REST
+## API REST
 L'API rest espone vari metodi per la manipolazione dell'oggetto User che rappresenta l'utente.
 
 L'API è documentata tramite swagger 2 esposto all'indirizzo
@@ -12,7 +15,7 @@ L'API è documentata tramite swagger 2 esposto all'indirizzo
 http://localhost:6868/swagger-ui.html
 ```
 
-# SOAP
+## SOAP
 Il wsdl del web service SOAP si trova al seguente indirizzo:
 ```bash
 http://localhost:6868/ws/users.wsdl
@@ -52,14 +55,14 @@ Esempio di risposta
 </SOAP-ENV:Envelope>
 ```
 
-# PRESENTATION
+## PRESENTATION
 Come client è stato utilizzato angularJS, in modalità MvvM:
 - user.service.js è il model
 - general.controller.js è il viewModel
 - index.html è la view
 che viene lanciato su un tomcat
 
-# CONTAINER
+## CONTAINER
 Il tutto è stato dockerizzato all'interno dello stesso container (db, api rest/soap, tomcat su cui gira la webapp)
 e lanciabile tramite docker-compose
 
