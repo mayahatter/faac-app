@@ -1,44 +1,84 @@
-# Docker Compose Spring Boot and MySQL example
+#RDBMS
+Come RDBMS è stato utilizzato mysql
 
-## Run the System
-We can easily run the whole with only a single command:
+#ORM
+Come ORM è stato utilizzato il JPA EntityManager di Hibernate facilmente integrabile in spring-boot
+
+#API REST
+L'API rest espone vari metodi per la manipolazione dell'oggetto User che rappresenta l'utente.
+
+L'API è documentata tramite swagger 2 esposto all'indirizzo
 ```bash
-docker-compose up
+http://localhost:6868/swagger-ui.html
 ```
 
-Docker will pull the MySQL and Spring Boot images (if our machine does not have it before).
-
-The services can be run on the background with command:
+#SOAP
+Il wsdl del web service SOAP si trova al seguente indirizzo:
 ```bash
-docker-compose up -d
+http://localhost:6868/ws/users.wsdl
 ```
 
-## Stop the System
-Stopping all the running containers is also simple with a single command:
 ```bash
-docker-compose down
+<soapenv:Envelope 
+	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:dto="http://com.faac/soap/dto">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <dto:getLoggedUsersRequest/>
+   </soapenv:Body>
+</soapenv:Envelope>
 ```
 
-If you need to stop and remove all containers, networks, and all images used by any service in <em>docker-compose.yml</em> file, use the command:
+Esempio di risposta
+```bash
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <ns2:getLoggedUsersResponse xmlns:ns2="http://com.faac/soap/dto">
+         <ns2:users>
+            <ns2:userid>maya88</ns2:userid>
+            <ns2:nome>Lorenzo</ns2:nome>
+            <ns2:cognome>Maiani</ns2:cognome>
+            <ns2:email>maiani.lorenzo44@gmail.com</ns2:email>
+         </ns2:users>
+         <ns2:users>
+            <ns2:userid>mirkone</ns2:userid>
+			<ns2:nome>Mirko</ns2:nome>
+            <ns2:cognome>Monti</ns2:cognome>
+            <ns2:email>mirkomonti@gmail.com</ns2:email>
+         </ns2:users>
+      </ns2:getLoggedUsersResponse>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+```
+
+#PRESENTATION
+Come client è stato utilizzato angularJS, in modalità MvvM:
+- user.service.js è il model
+- general.controller.js è il viewModel
+- index.html è la view
+che viene lanciato su un tomcat
+
+#CONTAINER
+Il tutto è stato dockerizzato all'interno dello stesso container (db, api rest/soap, tomcat su cui gira la webapp)
+e lanciabile tramite docker-compose
+
+Per lanciare il container docker, presupponendo di avere già installato Docker Desktop sulla propria macchina, 
+bisogna:
+
+- aprire un terminale cmd e posizionarsi nella root del progetto
+- lanciare dal terminale il comando 
+```bash
+docker-compose up -d --build
+```
+per lanciare docker in modalità detached ed attendere che tutte le componenti vengano caricate
+
+- il frontend è esposto sulla porta 6868 ed è raggiunibile all'url 
+```bash
+http://localhost:6868/
+```
+
+- per terminare l'esecuzione del container lanciare il comando 
 ```bash
 docker-compose down --rmi all
 ```
-
-For more detail, please visit:
-> [Docker Compose Spring Boot and MySQL example](https://www.bezkoder.com/docker-compose-spring-boot-mysql/)
-
-Related Posts:
-> [Spring Boot JPA + MySQL - Building Rest CRUD API example](https://www.bezkoder.com/spring-boot-jpa-crud-rest-api/)
-
-> [Spring Boot + GraphQL + MySQL example](https://www.bezkoder.com/spring-boot-graphql-mysql-jpa/)
-
-> [Spring Boot Rest XML example – Web service with XML Response](https://www.bezkoder.com/spring-boot-rest-xml/)
-
-> [Spring Boot: Upload CSV file data into MySQL Database](https://www.bezkoder.com/spring-boot-upload-csv-file/)
-
-> [Spring Boot: Upload Excel file data into MySQL Database](https://www.bezkoder.com/spring-boot-upload-excel-file-database/)
-
-> [Deploy Spring Boot App on AWS – Elastic Beanstalk](https://www.bezkoder.com/deploy-spring-boot-aws-eb/)
-
-Security:
-> [Spring Boot + Spring Security JWT Authentication & Authorization](https://www.bezkoder.com/spring-boot-jwt-authentication/)
