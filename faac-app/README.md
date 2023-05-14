@@ -1,20 +1,48 @@
-#RDBMS
-Come RDBMS è stato utilizzato mysql
+# FAAC-APP
+Sample web app that exposes a REST api and a SOAP web service interacting with MySQL database.
+ 
+The frontEnd is simple angularJS with MvvM Pattern Implementation.
 
-#ORM
-Come ORM è stato utilizzato il JPA EntityManager di Hibernate facilmente integrabile in spring-boot
+Client and server are containerized together with Docker compose.
 
-#API REST
-L'API rest espone vari metodi per la manipolazione dell'oggetto User che rappresenta l'utente.
+# LAUNCHING APP
+To launch the docker container, assuming you have already the Docker Desktop installed on your machine, you'll have to: 
 
-L'API è documentata tramite swagger 2 esposto all'indirizzo
+- navigate with cmd to the root of the project
+- execute the following command
+```bash
+docker-compose up -d --build
+```
+that runs docker in detached mode, and wait for all the components to be initialized.
+
+- to terminate the execution of docker, you'll have to execute the following command: 
+```bash
+docker-compose down --rmi all
+```
+
+
+## RDBMS
+The project uses mysql as rdbms
+
+## ORM
+The project uses the Hibernates' JPA EntityManager , easily integrable in spring-boot
+
+## API REST
+REST api exposes various methods for manipulating User entity.
+
+Rest api is described and documented with swagger 2, exposed at the url
+```bash
 http://localhost:6868/swagger-ui.html
+```
 
-#SOAP
-Il wsdl del web service SOAP si trova al seguente indirizzo:
-
+## SOAP
+At the following url you will find the SOAP web service's wsdl.
+```bash
 http://localhost:6868/ws/users.wsdl
+```
 
+This is an example of request, you can test the call with SoapUI.
+```bash
 <soapenv:Envelope 
 	xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
 	xmlns:dto="http://com.faac/soap/dto">
@@ -23,9 +51,10 @@ http://localhost:6868/ws/users.wsdl
       <dto:getLoggedUsersRequest/>
    </soapenv:Body>
 </soapenv:Envelope>
+```
 
-
-Esempio di risposta
+And the corresponding response
+```bash
 <SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
    <SOAP-ENV:Header/>
    <SOAP-ENV:Body>
@@ -45,26 +74,14 @@ Esempio di risposta
       </ns2:getLoggedUsersResponse>
    </SOAP-ENV:Body>
 </SOAP-ENV:Envelope>
+```
+
+## PRESENTATION
+angularJS with MvvM Pattern Implementation.
+- user.service.js : the model
+- general.controller.js :  the viewModel
+- index.html : è la view
+
+the .war is executed into tomcat
 
 
-#PRESENTATION
-Come client è stato utilizzato angularJS, in modalità MvvM:
-- user.service.js è il model
-- general.controller.js è il viewModel
-- index.html è la view
-che viene lanciato su un tomcat
-
-#CONTAINER
-Il tutto è stato dockerizzato all'interno dello stesso container (db, api rest/soap, tomcat su cui gira la webapp)
-e lanciabile tramite docker-compose
-
-Per lanciare il container docker, presupponendo di avere già installato Docker Desktop sulla propria macchina, 
-bisogna:
-
-- aprire un terminale cmd e posizionarsi nella root del progetto
-- lanciare dal terminale il comando "docker-compose up --build" ed attendere che tutte le componenti 
-vengano caricate
-
-- il frontend è esposto sulla porta 6868 ed è raggiunibile all'url http://localhost:6868/
-
-- per terminare l'esecuzione del container lanciare il comando "docker-compose down"
