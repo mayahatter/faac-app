@@ -77,7 +77,7 @@ And the corresponding response
 ```
 
 ## PRESENTATION
-ANgularJS with MvvM Pattern Implementation.
+angularJS with MvvM Pattern Implementation.
 - user.service.js : the model
 - general.controller.js :  the viewModel
 - index.html : è la view
