@@ -15,7 +15,14 @@ docker-compose up -d --build
 ```
 that runs docker in detached mode, and wait for all the components to be initialized.
 
-- to terminate the execution of docker, you'll have to execute the following command: 
+After the start, the webapp can be accessed from the following url
+```bash
+http://localhost:6868/
+```
+
+# TERMINATING APP
+
+to terminate the execution of docker, you'll have to execute the following command: 
 ```bash
 docker-compose down --rmi all
 ```
