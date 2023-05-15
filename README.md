@@ -5,7 +5,7 @@ The frontEnd is simple angularJS with MvvM Pattern Implementation.
 
 Client and server are containerized together with Docker compose.
 
-# LAUNCHING APP
+## LAUNCHING APP INSIDE DOCKER
 To launch the docker container, assuming you have already the Docker Desktop installed on your machine, you'll have to: 
 
 - navigate with cmd to the root of the project
@@ -20,7 +20,7 @@ After the start, the webapp can be accessed from the following url
 http://localhost:6868/
 ```
 
-# TERMINATING APP
+## TERMINATING APP
 
 to terminate the execution of docker, you'll have to execute the following command: 
 ```bash
