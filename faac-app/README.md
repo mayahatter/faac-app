@@ -5,7 +5,7 @@ The frontEnd is simple angularJS with MvvM Pattern Implementation.
 
 Client and server are containerized together with Docker compose.
 
-# LAUNCHING APP
+## LAUNCHING APP INSIDE DOCKER
 To launch the docker container, assuming you have already the Docker Desktop installed on your machine, you'll have to: 
 
 - navigate with cmd to the root of the project
@@ -15,7 +15,14 @@ docker-compose up -d --build
 ```
 that runs docker in detached mode, and wait for all the components to be initialized.
 
-- to terminate the execution of docker, you'll have to execute the following command: 
+After the start, the webapp can be accessed from the following url
+```bash
+http://localhost:6868/
+```
+
+## TERMINATING APP
+
+to terminate the execution of docker, you'll have to execute the following command: 
 ```bash
 docker-compose down --rmi all
 ```
@@ -84,4 +91,10 @@ angularJS with MvvM Pattern Implementation.
 
 the .war is executed into tomcat
 
+
+## UNIT TESTING
+Simple test in the class 
+```bash
+UserServiceTests
+```
 
