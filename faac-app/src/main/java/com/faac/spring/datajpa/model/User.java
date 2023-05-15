@@ -22,19 +22,15 @@ public class User {
 	@Column(name = "email")
 	private String email;
 
-	@Column(name = "logged")
-	private boolean logged;
-
 	public User() {
 
 	}
 
-	public User(String username, String nome, String cognome, String email, boolean logged) {
+	public User(String username, String nome, String cognome, String email) {
 		this.username = username;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.email = email;
-		this.logged = logged;
 	}
 
 	public long getId() {
@@ -75,14 +71,6 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public boolean isLogged() {
-		return logged;
-	}
-
-	public void setLogged(boolean logged) {
-		this.logged = logged;
 	}
 
 	@Override

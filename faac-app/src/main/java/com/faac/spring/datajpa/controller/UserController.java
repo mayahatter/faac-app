@@ -64,7 +64,7 @@ public class UserController {
 	public ResponseEntity<User> createUser(@RequestBody User user) {
 		try {
 			User _user = userRepository
-					.save(new User(user.getUsername(), user.getNome(), user.getCognome(), user.getEmail(), false));
+					.save(new User(user.getUsername(), user.getNome(), user.getCognome(), user.getEmail()));
 			return new ResponseEntity<>(_user, HttpStatus.CREATED);
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -108,18 +108,5 @@ public class UserController {
 
 	}
 
-	@GetMapping("/users/logged")
-	public ResponseEntity<List<User>> findByLogged() {
-		try {
-			List<User> users = userRepository.findByLogged(true);
-
-			if (users.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
-			return new ResponseEntity<>(users, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
 
 }

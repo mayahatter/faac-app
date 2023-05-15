@@ -1,7 +1,6 @@
 faac\com\soap\dto\GetLoggedUsersRequest.class
 com\faac\soap\dto\ObjectFactory.class
 com\faac\spring\datajpa\repository\UserRepository.class
-com\faac\SpringBootDataJpaApplication.class
 com\faac\spring\datajpa\controller\UserController.class
 com\faac\swagger\SwaggerFoxConfig.class
 com\faac\soap\dto\GetLoggedUsersResponse.class
@@ -13,6 +12,7 @@ faac\com\soap\dto\package-info.class
 com\faac\soap\service\LoggedUsersEndpoint.class
 com\faac\soap\dto\GetLoggedUsersRequest.class
 faac\com\soap\dto\GetLoggedUsersResponse.class
+com\faac\Application.class
 com\faac\soap\service\WebServiceConfig.class
 com\faac\soap\dto\package-info.class
 faac\com\soap\dto\User.class
