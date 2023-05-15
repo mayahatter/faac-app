@@ -85,3 +85,9 @@ angularJS with MvvM Pattern Implementation.
 the .war is executed into tomcat
 
 
+## UNIT TESTING
+Simple test in the class 
+```bash
+UserServiceTests
+```
+
